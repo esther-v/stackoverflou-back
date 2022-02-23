@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 //import routes
 const routes = require("./routes")
-app.use('/users', routes)
+app.use('/routes', routes)
 
 app.use(cors())
 app.use(json())
