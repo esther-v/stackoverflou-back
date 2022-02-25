@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const Mongoose = require('mongoose')
 
-const TopicSchema = mongoose.Schema({
+const topicSchema = new Mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -10,13 +10,14 @@ const TopicSchema = mongoose.Schema({
         required: true
     },
     user_id: {
-        type: Object
+        type: String,
+        required: true
     },
     creationDate: {
         type: Date,
-        default: Date.now
+        required: true
     }
 
-})
+}, {collection: "topic"})
 
-module.exports = mongoose.model('Topic', TopicSchema)
+module.exports = Mongoose.model('topic', topicSchema)
