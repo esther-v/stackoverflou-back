@@ -27,10 +27,9 @@ module.exports = (app) => {
 
     app.get('/api/topic/all', async (req,res) => {
       
+        const topics = await Topic.find({})
 
-        const topics = await Topic.find({_id: id})
-
-        res.json({status: 200, topics: topics[0]})
+        res.json({status: 200, topics: topics})
     })
 
     app.put('/api/topic/:id', async (req,res) => {

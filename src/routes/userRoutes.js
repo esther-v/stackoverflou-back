@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 const secret = "pitichat"
+const jwt = require('jsonwebtoken')
 
 module.exports = (app) => {
     const User = require('../models/user')
@@ -10,8 +11,8 @@ module.exports = (app) => {
         const hash = await bcrypt.hash(req.body.password, saltRounds)
 
         const data = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             nickname: req.body.nickname,
             email: req.body.email,
             password: hash,
