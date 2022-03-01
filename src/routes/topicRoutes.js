@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const Topic = require('../models/topics')
+    const Topic = require('../models/topic')
 
     //creer user
     app.post('/api/topic/save', async (req, res) => {
@@ -25,7 +25,8 @@ module.exports = (app) => {
         res.json({status: 200, topic: topic[0]})
     })
 
-    app.get('/api/topic/all', async (req,res) => {
+
+    app.get('/api/topics/all', async (req, res) => {
       
         const topics = await Topic.find({})
 

@@ -1,4 +1,5 @@
 const express = require('express')
+const {json} = require("express")
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -8,6 +9,7 @@ require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 app.use(cors())
+app.use(json())
 
 mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, () => {
     console.log("connected to db")
@@ -15,8 +17,10 @@ mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, () => {
 
 const userRoutes = require('./src/routes/userRoutes')
 const topicRoutes = require('./src/routes/topicRoutes')
+const messageRoutes = require('./src/routes/messageRoutes')
 userRoutes(app)
 topicRoutes(app)
+messageRoutes(app)
 
 app.get('/', (req, res, next) => {
     res.json({status: 200, msg: "ok"})

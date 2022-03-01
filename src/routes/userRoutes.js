@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const saltRounds = 10
-const secret = "pitichat"
+const secret = process.env.SECRET
 const jwt = require('jsonwebtoken')
 
 module.exports = (app) => {
