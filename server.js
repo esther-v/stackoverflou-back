@@ -18,9 +18,11 @@ mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, () => {
 const userRoutes = require('./src/routes/userRoutes')
 const topicRoutes = require('./src/routes/topicRoutes')
 const messageRoutes = require('./src/routes/messageRoutes')
+const authRoutes = require('./src/routes/authRoutes')
 userRoutes(app)
 topicRoutes(app)
 messageRoutes(app)
+authRoutes(app)
 
 app.get('/', (req, res, next) => {
     res.json({status: 200, msg: "ok"})

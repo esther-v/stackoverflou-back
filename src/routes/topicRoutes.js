@@ -17,6 +17,14 @@ module.exports = (app) => {
     })
 
     //Recuperer topic
+
+    app.get('/api/topic/all', async (req, res) => {
+      
+        const topics = await Topic.find({})
+
+        res.json({status: 200, topics: topics})
+    })
+
     app.get('/api/topic/:id', async (req,res) => {
         const id = req.params.id
 
@@ -26,12 +34,7 @@ module.exports = (app) => {
     })
 
 
-    app.get('/api/topics/all', async (req, res) => {
-      
-        const topics = await Topic.find({})
-
-        res.json({status: 200, topics: topics})
-    })
+    //modifier topic
 
     app.put('/api/topic/:id', async (req,res) => {
         const id = req.params.id
@@ -46,5 +49,13 @@ module.exports = (app) => {
         res.json({status: 200, result: result})
     })
 
+    //supprimer topic
+    app.delete('/api/topic/delete/:id', async (req, res)=> {
+        const id = req.params.id;
+
+        const result = await Topic.deleteOne({_id: id});
+
+        res.json({status: 200, result: result})
+    })
     
 }
