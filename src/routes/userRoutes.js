@@ -11,9 +11,9 @@ module.exports = (app) => {
         const hash = await bcrypt.hash(req.body.password, saltRounds)
 
         const data = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            nickname: req.body.nickname,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            nickName: req.body.nickName,
             email: req.body.email,
             password: hash,
             creationDate: new Date()
