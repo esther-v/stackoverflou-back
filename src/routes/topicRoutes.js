@@ -1,8 +1,11 @@
-module.exports = (app) => {
-    const Topic = require('../models/topic')
+const Topic = require('../models/topic')
+const withAuth = require('../../withAuth')
 
-    //creer user
-    app.post('/api/topic/save', async (req, res) => {
+module.exports = (app) => {
+    
+
+    //creer topic
+    app.post('/api/topic/save', withAuth, async (req, res) => {
        
         const data = {
             title: req.body.title,
@@ -13,6 +16,7 @@ module.exports = (app) => {
 
         const topic = await Topic(data)
         const result = await topic.save()
+
         res.json({status: 200, result, result})
     })
 
@@ -36,7 +40,7 @@ module.exports = (app) => {
 
     //modifier topic
 
-    app.put('/api/topic/:id', async (req,res) => {
+    app.put('/api/topic/update/:id', withAuth, async (req,res) => {
         const id = req.params.id
 
         const data = {
