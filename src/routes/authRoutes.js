@@ -1,8 +1,8 @@
-const withAuth = require('../withAuth')
+const withAuth = require('../../withAuth')
 const User = require('../models/user')
 
 module.exports = (app) => {
-    app.get('/ap/auth/checkToken', withAuth, async(req,res) => {
+    app.get('/api/auth/checkToken', withAuth, async(req,res) => {
         const _id = req.body._id
         const user = await User.find({_id})
 
